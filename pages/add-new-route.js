@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 const AddNewRoute = () => {
   return (
-    <div>
+    <Fragment>
       <h1>Add new route</h1>
-    </div>
+    </Fragment>
   );
 };
 

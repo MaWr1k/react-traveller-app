@@ -1,0 +1,25 @@
+.label{
+    padding-bottom: 25px;
+    width: 100%;
+    display: block;
+}
+.input{
+    border-radius: 3px;
+    border: 1px solid #2a2a2a;
+    background-color: transparent;
+    padding: 10px 20px;
+    font-size: 18px;
+    width: 100%;
+}
+.input:focus{
+
+}
+
+.invalid .input{
+    border-color: #ff6767;
+}
+
+.error-text{
+    padding-top: 10px;
+    color: #ff6767;
+}
