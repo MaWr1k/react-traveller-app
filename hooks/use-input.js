@@ -6,7 +6,7 @@ const useInput = (validateFunc) => {
 
   const valueIsValid = validateFunc(enteredValue);
   const hasErrors = !valueIsValid && isTouched;
-  const valueInputClasses = hasErrors ? 'invalid': 'is-valid';
+  const valueInputClasses = hasErrors ? 'invalid':'is-valid';
 
   const valueChangeHandler = (event) => {
     setEnteredValue(event.target.value);

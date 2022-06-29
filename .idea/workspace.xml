@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49194e64-61f0-4e01-aa15-6b03d69edc39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/common/UI/Layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/common/form/Input.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/common/form/Input.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hooks/use-input.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/placeSlice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/store/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/api/add-new-place.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/common/form/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/common/form/Input.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/common/form/Input.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/common/form/Input.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/use-input.js" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/use-input.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/add-new-place.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/add-new-place.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/add-new-route.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/add-new-route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1656402342110</updated>
       <workItem from="1656402346808" duration="2451000" />
-      <workItem from="1656491460284" duration="8328000" />
+      <workItem from="1656491460284" duration="13258000" />
     </task>
     <servers />
   </component>
