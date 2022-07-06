@@ -10,8 +10,8 @@ const placesSlice = createSlice({
   name:'places',
   initialState,
   reducers:{
-    checkTitle:(state)=>{
-      console.log(state);
+    toggleModal:(state)=>{
+      state.isShowModal = !state.isShowModal;
     }
   }
 });
