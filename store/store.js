@@ -1,8 +1,8 @@
 import {configureStore} from "@reduxjs/toolkit";
-import placeReducer from '../store/placeSlice';
+import placesReducer from './placesSlice';
 
 export const store = configureStore({
   reducer:{
-    place: placeReducer,
+    places: placesReducer,
   }
 });
