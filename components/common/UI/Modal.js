@@ -2,11 +2,11 @@ import React from 'react';
 
 import classes from './Modal.module.css';
 
-const Modal = ({onClose}) => {
+const Modal = ({onClose, children}) => {
   return (
     <div className={classes['modal-container']} onClick={onClose}>
       <div className={classes['modal-body']} onClick={(e)=>{e.stopPropagation()}}>
-        Modal Text
+        {children}
       </div>
     </div>
   );

@@ -1,0 +1,16 @@
+.places-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.places-list li{
+    cursor: pointer;
+    transition-duration: 0.4s;
+    padding-bottom: 10px;
+}
+.places-list li:last-child{
+    padding-bottom: 0;
+}
+.places-list li:hover{
+    text-decoration: underline;
+}
