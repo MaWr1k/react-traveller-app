@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import myMongoConnect from "../components/helpers/mongo-connect";
 
 export default function Home() {
   return (
@@ -11,4 +12,23 @@ export default function Home() {
       <h1>Home page</h1>
     </div>
   )
+}
+
+export async function getStaticProps(){
+  const {collection,client} = await myMongoConnect('routes');
+  const places = await collection.find().toArray();
+
+  client.close();
+
+  return {
+    props:{
+      places:places.map((place) =>{
+        return {
+          ...place,
+          _id:place._id.toString()
+        }
+      }),
+    },
+    revalidate: 60
+  }
 }

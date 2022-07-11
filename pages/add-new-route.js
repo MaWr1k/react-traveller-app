@@ -37,6 +37,9 @@ const AddNewRoute = ({places}) => {
   const addPlaceToRouteHandler = (place) => {
     dispatch(placesActions.addPlaceToRoute(place));
   }
+  const removePlaceFromRouteHandler = (place) => {
+    dispatch(placesActions.removePlaceFromRoute(place));
+  }
 
   const changeOrderPlaceHandler = (place_id,type) => {
     dispatch(placesActions.changeOrderPlaceInRoute({place_id,type}));
@@ -82,7 +85,7 @@ const AddNewRoute = ({places}) => {
           hasErrors={desc.hasErrors}
           onChange={desc.valueChangeHandler}
           onBlur={desc.inputBlurHandler} />
-        <PlacesList placesRouteList={placesRouteList} changeOrderPlaceHandler={changeOrderPlaceHandler}/>
+        <PlacesList placesRouteList={placesRouteList} changeOrderPlaceHandler={changeOrderPlaceHandler} removePlaceHandler={removePlaceFromRouteHandler}/>
         <button type='button' onClick={openAddingPlaceHandler}> Add place </button><br/>
         <button type='submit' disabled={!formIsCorrect}> Add new route </button>
       </form>

@@ -18,13 +18,16 @@ const placesSlice = createSlice({
     },
     addPlaceToRoute(state,{payload}){
       state.placesInRoute.push(payload);
-      state.placesListDb = state.placesListDb.filter(place=> place._id !== payload._id );
+      state.placesListDb = state.placesListDb.filter(place => place._id !== payload._id );
+    },
+    removePlaceFromRoute(state,{payload}){
+      state.placesListDb.push(payload);
+      state.placesInRoute = state.placesInRoute.filter(place => place._id !== payload._id );
     },
     changeOrderPlaceInRoute(state, {payload}){
       const placeIndex = state.placesInRoute.findIndex((place)=>{
         return place._id === payload.place_id
       });
-      console.log(payload.type);
       if(payload.type === 'up'){
         [state.placesInRoute[placeIndex],state.placesInRoute[placeIndex-1]] = [state.placesInRoute[placeIndex-1],state.placesInRoute[placeIndex]];
       }else if(payload.type === 'down'){
