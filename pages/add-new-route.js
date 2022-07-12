@@ -1,5 +1,6 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment, useEffect, useMemo, useRef} from 'react';
 import {useSelector, useDispatch} from "react-redux";
+// import {ObjectId} from "mongodb";
 
 import myMongoConnect from "../components/helpers/mongo-connect";
 import ModalPortal from "../HOC/ModalPortal";
@@ -15,9 +16,10 @@ import PlacesList from "../components/places/PlacesList";
 const AddNewRoute = ({places}) => {
   const dispatch = useDispatch();
   const isShowModal = useSelector(state => state.places.isShowModal);
-  const placesDBStore = useSelector(state => state.places.placesListDb);
+  const placesListDb = useSelector(state => state.places.placesListDb);
   const placesRouteList = useSelector(state => state.places.placesInRoute);
-
+  // let placesModalList = placesList.filter((place)=>place.inRoute === 0);
+  // let placesRouteList = placesList.filter((place)=>place.inRoute === 1);
 
   const title = useInput(value => value.trim().length > 3);
   const desc = useInput(value => value.trim().length > 20);
@@ -25,7 +27,6 @@ const AddNewRoute = ({places}) => {
   useEffect(()=>{
     dispatch(placesActions.insertPlacesFromDB(places))
   },[dispatch, places]);
-
 
   const openAddingPlaceHandler = () => {
     dispatch(placesActions.toggleModal());
@@ -37,29 +38,35 @@ const AddNewRoute = ({places}) => {
   const addPlaceToRouteHandler = (place) => {
     dispatch(placesActions.addPlaceToRoute(place));
   }
-  const removePlaceFromRouteHandler = (place) => {
-    dispatch(placesActions.removePlaceFromRoute(place));
+  const removePlaceFromRouteHandler = (placeId) => {
+    dispatch(placesActions.removePlaceFromRoute(placeId));
   }
-
   const changeOrderPlaceHandler = (place_id,type) => {
     dispatch(placesActions.changeOrderPlaceInRoute({place_id,type}));
   }
 
-
   // Checking form validation
   let formIsCorrect = false;
-  if(title.isValid && desc.isValid){
+  if(title.isValid && desc.isValid && placesRouteList.length){
     formIsCorrect = true;
   }
-  const formHandler = (e) => {
+  const formHandler = async (e) => {
     e.preventDefault();
 
     const data = {
       title: title.value,
-      places: placesRouteList
+      desc: desc.value,
+      places: placesRouteList.map(place=>place._id)
     }
-    console.log(data);
+    const response = await fetch('/api/add-new-route',{
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers:{
+        'Content-Type':'application/json',
+      }
+    });
     title.reset();
+    desc.reset();
   }
 
   return (
@@ -91,7 +98,7 @@ const AddNewRoute = ({places}) => {
       </form>
       {isShowModal && <ModalPortal>
         <Modal onClose={onCloseHandler}>
-          <PlacesModal places={placesDBStore} addPlaceToRouteHandler={addPlaceToRouteHandler}/>
+          <PlacesModal places={placesListDb} addPlaceToRouteHandler={addPlaceToRouteHandler}/>
         </Modal>
       </ModalPortal>}
 
@@ -107,10 +114,11 @@ export async function getStaticProps(){
 
   return {
     props:{
-      places:places.map((place) =>{
+      places:places.map((place) => {
         return {
           ...place,
-          _id:place._id.toString()
+          _id:place._id.toString(),
+          inRoute: 1,
         }
       }),
     },

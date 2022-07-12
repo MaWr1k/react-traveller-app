@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const result = await collection.insertOne(data);
 
     // console.log(result);
-    client.close();
+    await client.close();
     res.status(201).json({message:'Place added successfully'});
   }
 }

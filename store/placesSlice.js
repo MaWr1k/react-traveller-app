@@ -14,7 +14,20 @@ const placesSlice = createSlice({
       state.isShowModal = !state.isShowModal;
     },
     insertPlacesFromDB(state, action){
-      state.placesListDb = action.payload;
+      let placesArr = [...action.payload];
+      placesArr = placesArr.sort(function (a, b) {
+        const first = a.title.toLowerCase();
+        const second = b.title.toLowerCase();
+        if (first > second) {
+          return 1;
+        }
+        if (first < second) {
+          return -1;
+        }
+        // a должно быть равным b
+        return 0;
+      });
+      state.placesListDb = placesArr;
     },
     addPlaceToRoute(state,{payload}){
       state.placesInRoute.push(payload);
