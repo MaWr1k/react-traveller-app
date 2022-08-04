@@ -9,7 +9,6 @@ export default async function handler(req, res) {
     const {collection, client} = await myMongoConnect('places');
     const result = await collection.insertOne(data);
 
-    // console.log(result);
     await client.close();
     res.status(201).json({message:'Place added successfully'});
   }

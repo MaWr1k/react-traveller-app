@@ -1,26 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Layout = (props) => {
+const Layout = ({children}) => {
   return (
     <div>
       <header>
         <nav>
           <ul>
             <li>
-              <Link href="/">All routes</Link>
+              <Link href="/"><a>All routes</a></Link>
             </li>
             <li>
-              <Link href="/add-new-route">Add new Route</Link>
+              <Link href="/add-new-route"><a> Add new Route</a></Link>
             </li>
             <li>
-              <Link href="/add-new-place">Add new Place</Link>
+              <Link href="/add-new-place"><a>Add new Place</a></Link>
             </li>
           </ul>
         </nav>
       </header>
       <main>
-        {props.children}
+        {children}
       </main>
     </div>
   );

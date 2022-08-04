@@ -2,6 +2,7 @@ import React, {Fragment, useState} from 'react';
 
 import Input from "../components/common/form/Input";
 import useInput from "../hooks/use-input";
+import Meta from "../components/common/SEO/Meta";
 
 const AddNewPlace = () => {
   const title = useInput(value => value.length > 3);
@@ -97,6 +98,7 @@ const AddNewPlace = () => {
   }
   return (
     <Fragment>
+      <Meta title='Add new place | App for travellers'/>
       <h1>Add new place</h1>
       {formContent}
     </Fragment>

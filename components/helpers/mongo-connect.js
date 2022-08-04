@@ -1,10 +1,17 @@
 import {MongoClient} from "mongodb";
 
-export default async function myMongoConnect(collection){
-  const client = await MongoClient.connect('mongodb+srv://MaWr1k:VwU4LZ1HbcpO9sBX@cluster0.xbin73r.mongodb.net/traveller?retryWrites=true&w=majority');
+export default async function myMongoConnect(collections){
+  const client = await MongoClient.connect(process.env.DATABASE_STRING);
   const db = client.db();
+  // const collectionsArr = collections.map((collection)=>{ return db.collection('routes')});
+  // console.log(collectionsArr);
+  let collectionsArr = {};
+  collections.forEach((item)=> {
+    collectionsArr[item] = db.collection(item);
+  })
+  // console.log(collectionsArr['routes'])
   return {
-    collection:db.collection(collection),
+    collectionsArr,
     client
   };
 }
