@@ -7,8 +7,8 @@ export default async function handler(req,res){
       desc: req.body.desc,
       places: req.body.places.map(placeId=>ObjectId(placeId))
   }
-  const {collection,client} = await myMongoConnect('routes');
-  const result = await collection.insertOne(data);
+  const {collectionsArr,client} = await myMongoConnect(['routes']);
+  const result = await collectionsArr['routes'].insertOne(data);
 
   await client.close();
   res.status(201).json({message:'Route create successfully'});

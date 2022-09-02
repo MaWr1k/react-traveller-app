@@ -1,6 +1,5 @@
 import React, {Fragment, useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
-// import {ObjectId} from "mongodb";
 import {useState} from "react";
 
 import myMongoConnect from "../components/helpers/mongo-connect";
@@ -127,8 +126,8 @@ const AddNewRoute = ({places}) => {
 };
 
 export async function getStaticProps(){
-  const {collection,client} = await myMongoConnect('places');
-  const places = await collection.find().toArray();
+  const {collectionsArr,client} = await myMongoConnect(['places']);
+  const places = await collectionsArr['places'].find().toArray();
 
   client.close();
 
